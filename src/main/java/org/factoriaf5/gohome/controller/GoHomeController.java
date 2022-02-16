@@ -50,4 +50,10 @@ public class GoHomeController {
         goHomeRepository.save(goHome);
         return "redirect:/homes";
     }
+
+    @GetMapping("/homes/delete/{id}")
+    String remove(@PathVariable Long id) {
+        goHomeRepository.deleteById(id);
+        return "redirect:/homes";
+    }
 }

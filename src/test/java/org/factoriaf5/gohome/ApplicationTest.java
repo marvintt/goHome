@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -94,4 +95,13 @@ class ApplicationTests {
                 .andExpect(model().attribute("title", "Editar Casa"));
     }
 
+    @Test
+    void allowsToDeleteAHome() throws Exception {
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        mockMvc.perform(get("/homes/delete/" + goHome.getId()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/homes"));
+
+        assertThat(goHomeRepository.findById(goHome.getId()), equalTo(Optional.empty()));
+    }
 }
