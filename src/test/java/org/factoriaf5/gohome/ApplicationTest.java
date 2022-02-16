@@ -8,8 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -29,6 +34,7 @@ class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"));
     }
+
     @Autowired
     GoHomeRepository goHomeRepository;
 
@@ -45,9 +51,47 @@ class ApplicationTests {
     }
 
     @Test
-    void returnsAFormToAddNewHomes() throws Exception {
+    void returnsAFormToAddNewHome() throws Exception {
         mockMvc.perform(get("/homes/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("homes/new"));
+                .andExpect(view().name("homes/edit"))
+                .andExpect(model().attributeExists("goHome"))
+                .andExpect(model().attribute("title", "Añadir una nueva Casa"));
     }
+
+    @Test
+    void allowsToCreateANewHome() throws Exception {
+        mockMvc.perform(post("/homes/new")
+                        .param("title", "Villarrapa")
+                        .param("image", "https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg")
+                        .param("price", "300")
+                        .param("surface", "350m2")
+                        .param("description", "")
+                        .param("bedrooms", "2")
+                )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/homes"))
+        ;
+
+        List<GoHome> existingHomes = (List<GoHome>) goHomeRepository.findAll();
+        assertThat(existingHomes, contains(allOf(
+                hasProperty("title", equalTo("Villarrapa")),
+                hasProperty("image", equalTo("https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg")),
+                hasProperty("price", equalTo("300")),
+                hasProperty("surface", equalTo("350m2")),
+                hasProperty("description", equalTo("")),
+                hasProperty("bedrooms", equalTo("2"))
+        )));
+    }
+
+    @Test
+    void returnsAFormToEditHomes() throws Exception {
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        mockMvc.perform(get("/homes/edit/" + goHome.getId()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("homes/edit"))
+                .andExpect(model().attribute("goHome", goHome))
+                .andExpect(model().attribute("title", "Editar Casa"));
+    }
+
 }

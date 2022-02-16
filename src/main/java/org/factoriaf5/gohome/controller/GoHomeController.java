@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -27,9 +30,24 @@ public class GoHomeController {
     }
 
     @GetMapping("/homes/new")
-    String getForm(Model model){
+    String newGoHome(Model model){
         GoHome goHome = new GoHome();
         model.addAttribute("goHome", goHome);
-        return "homes/new";
+        model.addAttribute("title", "Añadir una nueva Casa");
+        return "homes/edit";
+    }
+
+    @GetMapping("/homes/edit/{id}")
+    String editGoHome(Model model, @PathVariable Long id){
+            GoHome goHome = goHomeRepository.findById(id).get();
+            model.addAttribute("goHome", goHome);
+            model.addAttribute("title", "Editar Casa");
+            return "homes/edit";
+        }
+
+        @PostMapping("/homes/new")
+    String addGoHome(@ModelAttribute GoHome goHome) {
+        goHomeRepository.save(goHome);
+        return "redirect:/homes";
     }
 }
