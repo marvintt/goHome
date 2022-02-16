@@ -5,10 +5,7 @@ import org.factoriaf5.gohome.repositories.GoHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -55,5 +52,13 @@ public class GoHomeController {
     String remove(@PathVariable Long id) {
         goHomeRepository.deleteById(id);
         return "redirect:/homes";
+    }
+
+    @GetMapping("/homes/search")
+    String searchHome(@RequestParam String word, Model model) {
+        List<GoHome> goHomes = goHomeRepository.findGoHomeByTitleContaining(word);
+        model.addAttribute("title", String.format("Casas que contienen \"%s\"", word));
+        model.addAttribute("homes", goHomes);
+        return "homes/all";
     }
 }

@@ -104,4 +104,18 @@ class ApplicationTests {
 
         assertThat(goHomeRepository.findById(goHome.getId()), equalTo(Optional.empty()));
     }
+
+    @Test
+    void allowsToSearchHomesByWord() throws Exception {
+
+        GoHome goHomeWithWord = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        GoHome goHomeWithoutWord = goHomeRepository.save(new GoHome("Villarrapa", "https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg", "300", "350m2", "", "2"));
+
+        mockMvc.perform(get("/homes/search?word=Napoles"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("homes/all"))
+                .andExpect(model().attribute("title", equalTo("Homes containing \"Napoles\"")))
+                .andExpect(model().attribute("homes", hasItem(goHomeWithWord)))
+                .andExpect(model().attribute("homes", not(hasItem(goHomeWithoutWord))));
+    }
 }
