@@ -25,4 +25,11 @@ public class GoHomeController {
         model.addAttribute("homes", homes);
         return "homes/all";
     }
+
+    @GetMapping("/homes/new")
+    String getForm(Model model){
+        GoHome goHome = new GoHome();
+        model.addAttribute("goHome", goHome);
+        return "homes/new";
+    }
 }
