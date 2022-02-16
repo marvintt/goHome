@@ -1,14 +1,16 @@
 package org.factoriaf5.gohome;
 
+import org.factoriaf5.gohome.repositories.GoHomeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -23,5 +25,17 @@ class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"));
     }
+    @Autowired
+    GoHomeRepository goHomeRepository;
 
+    @Test
+    void returnsTheExistingBooks() throws Exception {
+
+        Home home = goHomeRepository.save(new Home("Casa en las colinas"));
+
+        mockMvc.perform(get("/homes"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("homes/all"))
+                .andExpect(model().attribute("homes", hasItem(home)));
+    }
 }
