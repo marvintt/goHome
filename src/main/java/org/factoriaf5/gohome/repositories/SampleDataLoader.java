@@ -19,9 +19,9 @@ public class SampleDataLoader {
             goHomeRepository.saveAll(List.of(
                     new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"),
                     new GoHome("Los Rosales", ""),
-                    new Book("Object Design", "Rebecca Wirfs-Brock", "Software")
+                    new Go("Object Design", "Rebecca Wirfs-Brock", "Software")
             ));
         }
     }
     }
-}
+
