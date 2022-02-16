@@ -61,4 +61,5 @@ public class GoHomeController {
         model.addAttribute("homes", goHomes);
         return "homes/all";
     }
+
 }

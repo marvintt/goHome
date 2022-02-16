@@ -13,6 +13,7 @@ public class SampleDataLoader {
 
     @Autowired
     public SampleDataLoader(GoHomeRepository goHomeRepository) {
+
         this.goHomeRepository = goHomeRepository;
     }
 
@@ -67,13 +68,7 @@ public class SampleDataLoader {
                            "300",
                            "350m2",
                            "",
-                           "2"),
-                new GoHome("Napoles",
-                           "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg",
-                           "700",
-                           "670m2",
-                           "",
-                           "5")
+                           "2")
         ));
     }
 }

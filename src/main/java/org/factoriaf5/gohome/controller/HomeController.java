@@ -1,13 +1,31 @@
 package org.factoriaf5.gohome.controller;
 
+import org.factoriaf5.gohome.repositories.GoHome;
+import org.factoriaf5.gohome.repositories.GoHomeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 
 public class HomeController {
-    @GetMapping("/")
-    public String home() {
-        return "home";
+    private GoHomeRepository goHomeRepository;
+
+    @Autowired
+public HomeController(GoHomeRepository goHomeRepository) {
+        this.goHomeRepository = goHomeRepository;
+    }
+
+    @GetMapping(path = {"/", "/home", "/index"})
+    public String goHome(Model model) {
+        model.addAttribute("title", "Lista de Casas");
+        model.addAttribute("homes", goHomeRepository.findAll());
+        return "/home";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }

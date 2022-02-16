@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -30,6 +32,7 @@ class ApplicationTests {
     MockMvc mockMvc;
 
     @Test
+    @WithMockUser
     void loadsTheHomePage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -41,6 +44,7 @@ class ApplicationTests {
 
 
     @Test
+    @WithMockUser
     void returnsTheExistingHomes() throws Exception {
 
         GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
@@ -52,6 +56,7 @@ class ApplicationTests {
     }
 
     @Test
+    @WithMockUser
     void returnsAFormToAddNewHome() throws Exception {
         mockMvc.perform(get("/homes/new"))
                 .andExpect(status().isOk())
@@ -61,8 +66,10 @@ class ApplicationTests {
     }
 
     @Test
+    @WithMockUser
     void allowsToCreateANewHome() throws Exception {
         mockMvc.perform(post("/homes/new")
+                        .with(csrf())
                         .param("title", "Villarrapa")
                         .param("image", "https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg")
                         .param("price", "300")
@@ -86,6 +93,7 @@ class ApplicationTests {
     }
 
     @Test
+    @WithMockUser
     void returnsAFormToEditHomes() throws Exception {
         GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
         mockMvc.perform(get("/homes/edit/" + goHome.getId()))
@@ -96,6 +104,7 @@ class ApplicationTests {
     }
 
     @Test
+    @WithMockUser
     void allowsToDeleteAHome() throws Exception {
         GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
         mockMvc.perform(get("/homes/delete/" + goHome.getId()))
@@ -106,6 +115,7 @@ class ApplicationTests {
     }
 
     @Test
+    @WithMockUser
     void allowsToSearchHomesByWord() throws Exception {
 
         GoHome goHomeWithWord = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
@@ -114,7 +124,7 @@ class ApplicationTests {
         mockMvc.perform(get("/homes/search?word=Napoles"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("homes/all"))
-                .andExpect(model().attribute("title", equalTo("Homes containing \"Napoles\"")))
+                .andExpect(model().attribute("title", equalTo("Casas que contienen \"Napoles\"")))
                 .andExpect(model().attribute("homes", hasItem(goHomeWithWord)))
                 .andExpect(model().attribute("homes", not(hasItem(goHomeWithoutWord))));
     }
