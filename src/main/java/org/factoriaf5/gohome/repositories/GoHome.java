@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+@Entity 
 @Table(name = "homes")
 public class GoHome implements Serializable {
 
