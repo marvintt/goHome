@@ -12,11 +12,10 @@
             <h5 th:text="${goHome.title}" class="card-title"></h5>
             <ul class="list-group list-group-flush mb-3">
                 <li th:text="${goHome.id}" class="list-group-item item-all" style="display:none;"></li>
-                <li th:text="${goHome.title}" class="list-group-item item-all"></li>
-                <li th:text="${goHome.price+' €'}" class="list-group-item item-all"></li>
-                <li th:text="${goHome.surface}" class="list-group-item item-all"></li>
-                <li th:text="${goHome.description}" class="list-group-item item-all"></li>
-                <li th:text="${goHome.bedrooms}" class="list-group-item item-all"></li>
+                <li th:text="${'Precio: ' + goHome.price+' €'}" class="list-group-item item-all"></li>
+                <li th:text="${'Superficie: ' + goHome.surface}" class="list-group-item item-all"></li>
+                <li th:text="${'Información: ' + goHome.description}" class="list-group-item item-all" style="display:none;"></li>
+                <li th:text="${'Habitaciones: ' + goHome.bedrooms}" class="list-group-item item-all"></li>
             </ul>
         </div>
     </div>
