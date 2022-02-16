@@ -43,4 +43,11 @@ class ApplicationTests {
                 .andExpect(view().name("homes/all"))
                 .andExpect(model().attribute("homes", hasItem(goHome)));
     }
+
+    @Test
+    void returnsAFormToAddNewHomes() throws Exception {
+        mockMvc.perform(get("/homes/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("homes/new"));
+    }
 }
