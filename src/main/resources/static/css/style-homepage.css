@@ -1,0 +1,21 @@
+
+#banner {
+    position: relative;
+}
+
+img.banner{
+    width: 100%;
+    object-fit: cover;
+    height: 30vh;
+   }
+.fade-effect {
+    background: rgb(47, 155, 255, 0.8); 
+    width: 50%; 
+    
+    height: 30vh;
+    color: white;
+    font-size: 3em;
+    font-weight: 900;
+}
+
+
