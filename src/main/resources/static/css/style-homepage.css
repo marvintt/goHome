@@ -6,13 +6,13 @@
 img.banner{
     width: 100%;
     object-fit: cover;
-    height: 30vh;
+    height: 80vh;
    }
 .fade-effect {
     background: rgb(47, 155, 255, 0.8); 
     width: 50%; 
     
-    height: 30vh;
+    height: 80vh;
     color: white;
     font-size: 3em;
     font-weight: 900;
