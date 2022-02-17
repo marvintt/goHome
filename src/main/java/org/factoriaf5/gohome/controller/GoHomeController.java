@@ -70,6 +70,6 @@ public class GoHomeController {
             GoHome goHome = goHomeRepository.findById(id).get();
             model.addAttribute("Detail", goHome);
             model.addAttribute("titulo", "Detalles de la Casa");
-            return "/homes/detalles";
+            return "homes/detalles";
     }
 }

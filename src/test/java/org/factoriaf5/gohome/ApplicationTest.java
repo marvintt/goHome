@@ -48,7 +48,7 @@ class ApplicationTests {
     @WithMockUser
     void returnsTheExistingHomes() throws Exception {
 
-        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "Magnífico piso con reforma integral en 2020", "5"));
 
         mockMvc.perform(get("/homes"))
                 .andExpect(status().isOk())
@@ -75,7 +75,7 @@ class ApplicationTests {
                         .param("image", "https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg")
                         .param("price", "300")
                         .param("surface", "350m2")
-                        .param("description", "")
+                        .param("description", "Magnífico piso con reforma integral en 2020")
                         .param("bedrooms", "2")
                 )
                 .andExpect(status().is3xxRedirection())
@@ -88,7 +88,7 @@ class ApplicationTests {
                 hasProperty("image", equalTo("https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg")),
                 hasProperty("price", equalTo("300")),
                 hasProperty("surface", equalTo("350m2")),
-                hasProperty("description", equalTo("")),
+                hasProperty("description", equalTo("Magnífico piso con reforma integral en 2020")),
                 hasProperty("bedrooms", equalTo("2"))
         )));
     }
@@ -96,7 +96,7 @@ class ApplicationTests {
     @Test
     @WithMockUser
     void returnsAFormToEditHomes() throws Exception {
-        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "Magnífico piso con reforma integral en 2020", "5"));
         mockMvc.perform(get("/homes/edit/" + goHome.getId()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("homes/edit"))
@@ -107,7 +107,7 @@ class ApplicationTests {
     @Test
     @WithMockUser
     void allowsToDeleteAHome() throws Exception {
-        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "Magnífico piso con reforma integral en 2020", "5"));
         mockMvc.perform(get("/homes/delete/" + goHome.getId()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/homes"));
@@ -119,7 +119,7 @@ class ApplicationTests {
     @WithMockUser
     void allowsToSearchHomesByWord() throws Exception {
 
-        GoHome goHomeWithWord = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "", "5"));
+        GoHome goHomeWithWord = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "Magnífico piso con reforma integral en 2020", "5"));
         GoHome goHomeWithoutWord = goHomeRepository.save(new GoHome("Villarrapa", "https://www.miamiinmuebles.com/images/mls/A/10723310/1.jpg", "300", "350m2", "", "2"));
 
         mockMvc.perform(get("/homes/search?word=Napoles"))
@@ -128,6 +128,17 @@ class ApplicationTests {
                 .andExpect(model().attribute("title", equalTo("Casas que contienen \"Napoles\"")))
                 .andExpect(model().attribute("homes", hasItem(goHomeWithWord)))
                 .andExpect(model().attribute("homes", not(hasItem(goHomeWithoutWord))));
+    }
+
+    @Test
+    @WithMockUser
+    void returnsAViewDetails() throws Exception {
+        GoHome goHome = goHomeRepository.save(new GoHome("Napoles", "http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg", "700", "670m2", "Magnífico piso con reforma integral en 2020", "5"));
+        mockMvc.perform(get("/homes/detalles/" + goHome.getId()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("homes/detalles"))
+                .andExpect(model().attribute("Detail", goHome))
+                .andExpect(model().attribute("titulo", "Detalles de la Casa"));
     }
 
 }
