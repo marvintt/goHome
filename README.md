@@ -23,7 +23,7 @@ Securing Web, Barra de Búsqueda, Formulario para Contacto.
 ./gradlew build --info --debug --stacktrace
 #### Forzar la actualización de las últimas dependencias, borrar la compilación y compilar
 ./gradlew clean build --refresh-dependencies
-./gradlew build
+
 
 ### Expresiones de Gratitud 🎁
 [Adevinta Spain](https://www.adevinta.es/)
