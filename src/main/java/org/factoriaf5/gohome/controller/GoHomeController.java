@@ -38,11 +38,19 @@ public class GoHomeController {
     }
 
     @GetMapping("/homes/edit/{id}")
+<<<<<<< HEAD
     String editGoHome(Model model, @PathVariable Long id) {
         GoHome goHome = goHomeRepository.findById(id).get();
         model.addAttribute("goHome", goHome);
         model.addAttribute("title", "Editar Casa");
         return "homes/edit";
+=======
+    String editGoHome(Model model, @PathVariable Long id){
+            GoHome goHome = goHomeRepository.findById(id).get();
+            model.addAttribute("goHome", goHome);
+            model.addAttribute("title", "Editar Casa");
+            return "homes/edit";
+>>>>>>> feature/detalle
     }
 
     @PostMapping("/homes/new")
@@ -65,4 +73,11 @@ public class GoHomeController {
         return "homes/all";
     }
 
+    @GetMapping("/homes/detalles/{id}")
+    String GoHomeDetalle(Model model, @PathVariable Long id){
+            GoHome goHome = goHomeRepository.findById(id).get();
+            model.addAttribute("Detail", goHome);
+            model.addAttribute("titulo", "Detalles de la Casa");
+            return "/homes/detalles";
+    }
 }
