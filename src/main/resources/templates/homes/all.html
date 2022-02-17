@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <body>
- <header th:replace="fragments/header"></header>
+<header th:replace="fragments/header"></header>
 
 <section class="container mb-5">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -11,12 +11,11 @@
     <h1 th:text="${title}"></h1>
 
 
-    <div class="d-flex flex-row flex-sm-wrap align-items-center bd-highlight mb-5">
-
-        <div th:each="goHome: ${homes}" class="card block" style="width: 18rem;">
-            <img th:src="${goHome.image}" class="card-img-top" alt="cover">
+    <div class="d-flex flex-row flex-wrap bd-highlight">
+        <div th:each="goHome: ${homes}" class="card block m-3" style="width: 18rem; height: 30rem;">
+            <img th:src="${goHome.image}" class="card-img-top h-50" alt="cover">
             <div class="block_body block_body_cat">
-                <h5 th:text="${goHome.title}" class="card-title"></h5>
+                <h5 th:text="${goHome.title}" class="card-title ml-1 "></h5>
                 <ul class="list-group list-group-flush mb-3">
                     <li th:text="${goHome.id}" class="list-group-item item-all" style="display:none;"></li>
                     <li th:text="${'Precio: ' + goHome.price+' €'}" class="list-group-item item-all"></li>
@@ -34,6 +33,6 @@
 
 
 </section>
- <footer th:replace="fragments/footer"></footer>
+<footer th:replace="fragments/footer"></footer>
 </body>
 </html>
