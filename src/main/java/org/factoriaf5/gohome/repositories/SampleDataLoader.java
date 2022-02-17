@@ -40,7 +40,7 @@ public class SampleDataLoader {
                            "",
                            "2"),
                 new GoHome("Bella Vista",
-                          "https://images.homify.com/images/a_0,c_limit,f_auto,h_1024,q_auto,w_1024/v1479748324/p/photo/image/1709765/Casa_Villa_Lobos_2/fotos-de-casas-moderno-por-arquiteto-aquiles-nicolas-kilaris.jpg",
+                           "http://verfachadasdecasas.com/wp-content/uploads/2018/09/Fachadas-de-casas-blancas-de-dos-pisos.jpg",
                            "630",
                            "520m2",
                            "",
