@@ -25,7 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ApplicationTests {
     @BeforeEach
     void setUp() {
+
         goHomeRepository.deleteAll();
+
     }
 
     @Autowired
@@ -41,7 +43,6 @@ class ApplicationTests {
 
     @Autowired
     GoHomeRepository goHomeRepository;
-
 
     @Test
     @WithMockUser
@@ -128,4 +129,5 @@ class ApplicationTests {
                 .andExpect(model().attribute("homes", hasItem(goHomeWithWord)))
                 .andExpect(model().attribute("homes", not(hasItem(goHomeWithoutWord))));
     }
+
 }
