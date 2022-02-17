@@ -11,18 +11,16 @@
                   <div class="col-md-6">
                         <div class="card-body">
                               <h5 class="card-title">Descripción</h5>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                    to additional content. This content is a little bit longer.</p>
-                              
+                              <p class="card-text" th:text="${Detail.description}"></p>
                         </div>
                   </div>
                   <div class="col-md-6 d-flex align-items-center justify-content-center">
-                        <img src="http://2.bp.blogspot.com/-CPACB1sSmGs/Unvq3fKG4uI/AAAAAAAAHd8/iJoo2HB7dG4/s1600/fachada-de-casa-moderna-de-ladrillo-visto-de-2-pisos.jpg" width="100%" class="img-fluid rounded-start " alt="...">
+                        <img th:src="${Detail.image}" width="100%" class="img-fluid rounded-start " alt="...">
                   </div>
             </div>
       </div>
       <div class="container">
-            
+
       </div>
 
       <footer th:replace="fragments/footer"></footer>
