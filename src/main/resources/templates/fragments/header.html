@@ -31,11 +31,11 @@
                     <button class="btn btn-primary my-2" type="submit">Buscar</button>
                 </form>
                 <form th:action="@{/login}" method="get" sec:authorize="isAnonymous()">
-                    <!--<input class="btn btn-outline-danger ms-2" type="submit" value="Acceso" />-->
+
                     <button  class="btn btn-success ms-2 my-2" type="submit"><i class="bi bi-box-arrow-in-right"></i> </button>
                 </form>
                 <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
-                    <!--<input class="btn btn-outline-danger ms-2" type="submit" value="Desconectar " />-->
+
                     <button class="btn btn-danger ms-2  my-2" type="submit"><i class="bi bi-box-arrow-left"> </i></button>
                 </form>
             </div>
