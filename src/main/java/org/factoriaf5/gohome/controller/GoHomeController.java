@@ -59,7 +59,7 @@ public class GoHomeController {
 
     @GetMapping("/homes/search")
     String searchHome(@RequestParam String word, Model model) {
-        List<GoHome> goHomes = goHomeRepository.findGoHomeByTitleContaining(word);
+        List<GoHome> goHomes = goHomeRepository.findGoHomeByTitleContainingIgnoreCase(word);
         model.addAttribute("title", String.format("Casas que contienen \"%s\"", word));
         model.addAttribute("homes", goHomes);
         return "homes/all";

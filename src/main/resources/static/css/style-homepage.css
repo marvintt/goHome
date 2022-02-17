@@ -18,4 +18,9 @@ img.banner{
     font-weight: 900;
 }
 
-
+.footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    align-self: center;
+}

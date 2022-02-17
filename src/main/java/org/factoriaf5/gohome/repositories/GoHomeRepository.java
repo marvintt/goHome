@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface GoHomeRepository extends JpaRepository<GoHome, Long> {
-    List<GoHome>findGoHomeByTitleContaining(String word);
+    List<GoHome>findGoHomeByTitleContainingIgnoreCase(String word);
 
 }
