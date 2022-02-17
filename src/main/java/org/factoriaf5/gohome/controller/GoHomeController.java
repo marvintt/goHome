@@ -66,7 +66,7 @@ public class GoHomeController {
     String GoHomeDetalle(Model model, @PathVariable Long id){
             GoHome goHome = goHomeRepository.findById(id).get();
             model.addAttribute("Detail", goHome);
-            model.addAttribute("title", "Detalles de la Casa");
+            model.addAttribute("titulo", "Detalles de la Casa");
             return "/homes/detalles";
     }
 }
