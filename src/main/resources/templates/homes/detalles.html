@@ -18,11 +18,16 @@
                               <h5>Precio : <i class="bi bi-currency-euro"></i> [[${Detail.price}]]</h5>
                               <h5>Superficie : <i class="bi bi-grid-3x3"></i> [[${Detail.surface}]] m<sup>2</sup></h5>
                               <h5 class="d-flex align-content-center ">Baños : <img class="mx-2" th:src="@{/img/cuarto-de-bano.png}" width="22rem"> [[${Detail.bedrooms}]]</h5>
+                              <div class="text-center">
+                                    <a class="btn btn-outline-warning btn-sm mb-5 mt-5 edit-btn" href="/homes/info">Información</a>
+                              </div>
                         </div>
                   </div>
                   <div class="col-md-6 d-flex align-items-center justify-content-center">
                         <img th:src="${Detail.image}" width="100%" class="img-fluid rounded-start " alt="...">
+                        
                   </div>
+                  
             </div>
       </div>
       
