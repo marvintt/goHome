@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <section class="container mb-5">
+    <section class="container">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-outline-danger mt-3" href="/homes/new" role="button">Añadir Nuevo</a>
         </div>
-        <h1 th:text="${title}">hola mundo</h1>
+        <h1 th:text="${title}"></h1>
 
-        <div th:each="goHome: ${homes}" class="card" style="width: 18rem;">
+        <div th:each="goHome: ${homes}" class="card" style="width: 60rem">
             <img class="card-img-top" th:src="${goHome.image}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" th:text="${goHome.title}"></h5>
@@ -27,7 +27,7 @@
                     <li th:text="${goHome.title}" class="list-group-item item-all"></li>
                     <li th:text="${goHome.price+' €'}" class="list-group-item item-all"></li>
                     <li th:text="${goHome.surface}" class="list-group-item item-all"></li>
-                    <li th:text="${goHome.description}" class="list-group-item item-all"></li>
+                    <li th:text="${goHome.description}" class="list-group-item item-all">descripcion</li>
                     <li th:text="${goHome.bedrooms}" class="list-group-item item-all"></li>
                 </ul>
                 <a class="btn btn-outline-warning btn-sm mb-5 edit-btn" th:href="'/homes/edit/'+${home.id}">Edit</a>
