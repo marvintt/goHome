@@ -6,7 +6,7 @@
 
 <section class="container mb-5">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-outline-danger mt-3" href="/homes/new" role="button">Añadir Nuevo</a>
+        <a class="btn btn-outline-danger mt-3" href="/homes/new" role="button" sec:authorize="isAuthenticated()">Añadir Nuevo</a>
     </div>
     <h1 th:text="${title}"></h1>
 
@@ -30,6 +30,7 @@
                    sec:authorize="isAuthenticated()">Delete</a>
             </div>
         </div>
+
     </div>
 
 

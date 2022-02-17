@@ -1,5 +1,6 @@
 package org.factoriaf5.gohome.controller;
 
+import org.factoriaf5.gohome.repositories.ClientRepository;
 import org.factoriaf5.gohome.repositories.GoHome;
 import org.factoriaf5.gohome.repositories.GoHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import java.util.List;
 public class GoHomeController {
     private GoHomeRepository goHomeRepository;
 
+
     @Autowired
-    public GoHomeController(GoHomeRepository goHomeRepository) {
+    public GoHomeController(GoHomeRepository goHomeRepository, ClientRepository clientRepository) {
+
         this.goHomeRepository = goHomeRepository;
     }
 
@@ -27,7 +30,7 @@ public class GoHomeController {
     }
 
     @GetMapping("/homes/new")
-    String newGoHome(Model model){
+    String newGoHome(Model model) {
         GoHome goHome = new GoHome();
         model.addAttribute("goHome", goHome);
         model.addAttribute("title", "Añadir una nueva Casa");
@@ -35,14 +38,14 @@ public class GoHomeController {
     }
 
     @GetMapping("/homes/edit/{id}")
-    String editGoHome(Model model, @PathVariable Long id){
-            GoHome goHome = goHomeRepository.findById(id).get();
-            model.addAttribute("goHome", goHome);
-            model.addAttribute("title", "Editar Casa");
-            return "homes/edit";
-        }
+    String editGoHome(Model model, @PathVariable Long id) {
+        GoHome goHome = goHomeRepository.findById(id).get();
+        model.addAttribute("goHome", goHome);
+        model.addAttribute("title", "Editar Casa");
+        return "homes/edit";
+    }
 
-        @PostMapping("/homes/new")
+    @PostMapping("/homes/new")
     String addGoHome(@ModelAttribute GoHome goHome) {
         goHomeRepository.save(goHome);
         return "redirect:/homes";

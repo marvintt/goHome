@@ -1,6 +1,6 @@
 package org.factoriaf5.gohome.controller;
 
-import org.factoriaf5.gohome.repositories.GoHome;
+
 import org.factoriaf5.gohome.repositories.GoHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public HomeController(GoHomeRepository goHomeRepository) {
     public String goHome(Model model) {
         model.addAttribute("title", "Lista de Casas");
         model.addAttribute("homes", goHomeRepository.findAll());
-        return "/home";
+        return "home";
     }
 
     @GetMapping("/login")
