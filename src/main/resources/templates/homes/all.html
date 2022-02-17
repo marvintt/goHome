@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <body>
 <header th:replace="fragments/header"></header>
 
@@ -15,18 +16,24 @@
         <div th:each="goHome: ${homes}" class="card block m-3" style="width: 30rem; height: 30rem;">
             <img th:src="${goHome.image}" class="card-img-top h-50" alt="cover">
             <div class="block_body block_body_cat">
-                <h5 th:text="${goHome.title}" class="card-title" style="margin-left: 1rem;"></h5>
+                <h5  class="card-title ml-1 "><i class="bi bi-house-fill"></i>  [[${goHome.title}]]</h5>
                 <ul class="list-group list-group-flush mb-3">
                     <li th:text="${goHome.id}" class="list-group-item item-all" style="display:none;"></li>
+                    <li th:text="${goHome.description}" class="list-group-item item-all"></li>
+                    <li class="list-group-item item-all"><i class="bi bi-currency-euro"></i> [[${goHome.price}]] <i class="bi bi-grid-3x3"></i> [[${goHome.surface}]] m<sup>2</sup>. <img th:src="@{/img/cuarto-de-bano.png}" width="15rem"> [[${goHome.bedrooms}]]. </li>
+                    <!--
                     <li th:text="${'Precio: ' + goHome.price+' €'}" class="list-group-item item-all"></li>
                     <li th:text="${'Superficie: ' + goHome.surface}" class="list-group-item item-all"></li>
                     <li th:text="${'Información: ' + goHome.description}" class="list-group-item item-all" style="display:none;"></li>
                     <li th:text="${'Habitaciones: ' + goHome.bedrooms}" class="list-group-item item-all"></li>
+                    -->
                 </ul>
-                <a class="btn btn-outline-warning btn-sm mb-5 edit-btn" style="margin-left: 1rem;" th:href="'/homes/edit/'+${goHome.id}"
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-outline-warning btn-sm mb-5 edit-btn" style="margin-right: .5rem;" th:href="'/homes/edit/'+${goHome.id}"
                     sec:authorize="isAuthenticated()">Edit</a>
-                <a class="btn btn-outline-danger btn-sm mb-5 del-btn " th:href="'/homes/delete/'+${goHome.id}"
+                    <a class="btn btn-outline-danger btn-sm mb-5 del-btn " th:href="'/homes/delete/'+${goHome.id}"
                     sec:authorize="isAuthenticated()">Delete</a>
+                </div>
             </div>
         </div>
     </div>
