@@ -1,4 +1,10 @@
-.titleadd {
+h1 {
    text-align: center;
+}
 
+.footer {
+   background-color: #000000;
+   color: white;
+   text-align: center;
+   align-self: center;
 }
