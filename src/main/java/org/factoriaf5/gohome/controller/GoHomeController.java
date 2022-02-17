@@ -62,4 +62,8 @@ public class GoHomeController {
         return "homes/all";
     }
 
+    @GetMapping("/homes/detalles")
+    String GoHomeDetalle(Model model) {
+        return "/homes/detalles";
+    }
 }
