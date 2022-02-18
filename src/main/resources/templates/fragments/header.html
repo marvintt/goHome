@@ -1,4 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head"></head>
 <nav class="navbar navbar-expand-lg navClase ">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -26,17 +27,17 @@
                 </ul>
             </ul>
             <div class="d-flex justify-content-between">
-                <form class="d-flex gap-2" action="/homes/search" method="get">
-                    <input name="word" class="form-control my-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-primary my-2" type="submit">Buscar</button>
+                <form class="d-flex gap-2 px-5" action="/homes/search" method="get">
+                    <input name="word" class="form-control my-2" style="width: 170px;" type="search" placeholder="Introduce datos" aria-label="Search">
+                    <button class="button-search my-2" type="submit">Buscar</button>
                 </form>
                 <form th:action="@{/login}" method="get" sec:authorize="isAnonymous()">
 
-                    <button  class="btn btn-success ms-2 my-2" type="submit"><i class="bi bi-box-arrow-in-right"></i> </button>
+                    <button  class="btn ms-2 my-2 button-login" type="submit"><i class="bi bi-box-arrow-in-right"></i> </button>
                 </form>
                 <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
 
-                    <button class="btn btn-danger ms-2  my-2" type="submit"><i class="bi bi-box-arrow-left"> </i></button>
+                    <button class="btn button-logout ms-2  my-2" type="submit"><i class="bi bi-box-arrow-left"> </i></button>
                 </form>
             </div>
             

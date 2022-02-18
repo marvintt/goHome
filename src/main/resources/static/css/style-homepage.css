@@ -27,12 +27,51 @@ img.banner{
     font-size: 3em;
     font-weight: 900;
 }
-
+.button-search, .button-information {
+    min-width: 100px;
+    height: 40px;
+    color: #fff;
+    padding: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    background: #2F9BFE;
+  }
+  .button-search:hover, .button-information:hover {
+    background-color: #384bf3;
+    color: #fff;
+  }
+  .button-search:active, .button-information:active {
+    color: #fff;
+    top: 2px;
+    
+  }
 .footer {
     background-color: #ffffff;
     color: #000000;
     text-align: center;
     align-self: center;
+}
+.button-login {
+    background-color:#55E2C0;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px #0000001a, 4px 4px 5px 0px rgba(0,0,0,.1);
+}
+.button-login:hover {
+    background-color: #15c49b;
+}
+
+.button-logout {
+    background-color:#505feb;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+}
+.button-logout:hover {
+    background-color:#2134e7;
 }
 
 .navClase{
@@ -61,4 +100,83 @@ img.banner{
 .circle{
     border-radius: 100%;
 }
+
+.button-add-home {
+        min-width: 200px;
+        height: 60px;
+        color: #fff;
+        padding: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background-size: 120% auto;
+        background-image: linear-gradient(315deg, #55E2C0 0%, #2F9BFE 75%);
+}
+      
+
+.button-add-home:hover {
+        background-position: right center;
+        color: white;
+}
+.button-add-home:active {
+        top: 2px;
+}
+
+.button-edit {
+        min-width: 70px;
+        height: 40px;
+        color: #fff;
+        padding: 10px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background: #55E2C0;
+        box-shadow: 0 5px #4abba1;
+      }
+      .button-edit:hover {
+        box-shadow: 0 3px #3ca578;
+        top: 1px;
+        color: white
+      }
+      .button-edit:active {
+        box-shadow: 0 0 #1db491;
+        top: 5px;
+}
+
+.button-delete {
+        min-width: 70px;
+        height: 40px;
+        color: #fff;
+        padding: 10px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background: #e23d61;
+        box-shadow: 0 5px #c02b4b;
+      }
+.button-delete:hover {
+        box-shadow: 0 3px #a02540;
+        top: 1px;
+        color: white
+      }
+.button-delete:active {
+        box-shadow: 0 0 #e93058;
+        top: 5px;
+}
+
 
