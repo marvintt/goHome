@@ -11,7 +11,7 @@
 <main>
 
     <section id="banner">
-        <img th:src="@{/img/foto.jpg}" class="img-fluid banner" alt="...">
+        <img th:src="@{/img/foto.jpg}" class="img-fluid banner" alt="foto de una casa con piscina">
 
         <div class="fade-effect position-absolute top-0 end-0 d-flex flex-row-reverse bd-highlight">
             <h2 class="d-flex align-items-center display-1 text-center me-3">Encuentra tu casa ideal</h2>
@@ -25,7 +25,7 @@
 
 
         <div class="d-flex flex-row flex-wrap justify-content-center bd-highlight">
-            <div th:each="goHome: ${homes}" class="card block m-3" style="width: 30rem; height: 30rem;">
+            <div th:each="goHome: ${homes}" class="card block m-3" style="width: 30rem; height: 30rem; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);">
                 <a class="h-50" th:href="'/homes/detalles/'+${goHome.id}"><img th:src="${goHome.image}"
                                                                                class="card-img-top h-100"
                                                                                alt="cover"></a>
@@ -40,7 +40,7 @@
                         </li>
                     </ul>
                     <div class="text-center">
-                        <a class="btn btn-outline-warning btn-sm mb-5 edit-btn" href="/homes/info">Información</a>
+                        <a class="btn btn-sm my-2 mb-5 button-information edit-btn" href="/homes/info">Información</a>
                     </div>
 
                 </div>
