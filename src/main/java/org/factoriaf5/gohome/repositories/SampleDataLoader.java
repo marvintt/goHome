@@ -68,7 +68,7 @@ public class SampleDataLoader {
                            "300",
                            "350",
                            "Estupendo Loft reformado y amueblado a pocos minutos del parque de Atenas y del Palacio Real.",
-                           "2")
+                           "1")
         ));
     }
 }

@@ -2,7 +2,7 @@ package org.factoriaf5.gohome.controller;
 
 import org.factoriaf5.gohome.repositories.Client;
 import org.factoriaf5.gohome.repositories.ClientRepository;
-import org.factoriaf5.gohome.repositories.GoHomeRepository;
+import org.factoriaf5.gohome.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,13 @@ import java.util.List;
 public class ClientController {
 
     private ClientRepository clientRepository;
+    private CategoryRepository filterRepository;
 
     @Autowired
-    public ClientController(ClientRepository clientRepository) {
+    public ClientController(ClientRepository clientRepository, CategoryRepository filterRepository) {
 
         this.clientRepository = clientRepository;
+        this.filterRepository = filterRepository;
     }
 
     @GetMapping("/homes/clientlist")

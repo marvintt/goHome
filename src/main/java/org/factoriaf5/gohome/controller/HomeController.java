@@ -1,6 +1,7 @@
 package org.factoriaf5.gohome.controller;
 
 
+import org.factoriaf5.gohome.repositories.CategoryRepository;
 import org.factoriaf5.gohome.repositories.GoHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class HomeController {
     private GoHomeRepository goHomeRepository;
+    private CategoryRepository filterRepository;
 
     @Autowired
-public HomeController(GoHomeRepository goHomeRepository) {
+public HomeController(GoHomeRepository goHomeRepository, CategoryRepository filterRepository) {
         this.goHomeRepository = goHomeRepository;
+        this.filterRepository = filterRepository;
     }
 
     @GetMapping(path = {"/", "/home", "/index"})

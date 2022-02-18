@@ -54,6 +54,7 @@ class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("homes/all"))
                 .andExpect(model().attribute("homes", hasItem(goHome)));
+
     }
 
     @Test
@@ -63,8 +64,16 @@ class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("homes/edit"))
                 .andExpect(model().attributeExists("goHome"))
-                .andExpect(model().attribute("title", "Añadir una nueva Casa"));
+                .andExpect(model().attribute("title", "Añadir una nueva Casa"))
+                .andExpect(model().attribute("categories", hasItems(
+                    hasProperty("name", is("1")),
+                    hasProperty("name", is("2")),
+                    hasProperty("name", is("3")),
+                    hasProperty("name", is("4")),
+                    hasProperty("name", is("5"))
+        )));
     }
+
 
     @Test
     @WithMockUser
@@ -101,8 +110,16 @@ class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("homes/edit"))
                 .andExpect(model().attribute("goHome", goHome))
-                .andExpect(model().attribute("title", "Editar Casa"));
+                .andExpect(model().attribute("title", "Editar Casa"))
+                .andExpect(model().attribute("categories", hasItems(
+                    hasProperty("name", is("1")),
+                    hasProperty("name", is("2")),
+                    hasProperty("name", is("3")),
+                    hasProperty("name", is("4")),
+                    hasProperty("name", is("5"))
+                )));
     }
+
 
     @Test
     @WithMockUser
@@ -140,5 +157,8 @@ class ApplicationTests {
                 .andExpect(model().attribute("Detail", goHome))
                 .andExpect(model().attribute("titulo", "Detalles de la Casa"));
     }
+
+
+
 
 }
