@@ -39,8 +39,8 @@ Securing Web, Barra de Búsqueda, Formulario para Contacto.
 [Maria Jose Alba](https://github.com/majoalba20)
 [Carlos Eduardo Martinez](https://github.com/marvintt)
 [Irina Petrova Dvernik](https://github.com/irina-p-d)
-[Tamara L. San José ]()
-[Claudio ]()
+[Tamara L. San José](https://github.com/tamarasanjm)
+[Claudio ](https://github.com/Claucode97)
 
 
 ### Expresiones de Gratitud 🎁
