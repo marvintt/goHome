@@ -1,6 +1,6 @@
 ## GoHome
 
-![](C:\Users\Desi\Documents\bcnfemtech\goHome/src/main/resources/static/img/gohome.png)
+![](src/main/resources/static/img/gohome.png)
 
 ## Repositorio del proyecto
 https://github.com/desimorenoh/goHome
