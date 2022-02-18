@@ -62,3 +62,258 @@ img.banner{
     border-radius: 100%;
 }
 
+
+.registration-form{
+    padding: 50px 0;
+}
+
+.registration-form form{
+    background-color: #eeeeee;
+    max-width: 700px;
+    margin: auto;
+    padding: 50px 70px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 11px -2px #000000;
+}
+
+.registration-form .form-icon{
+	text-align: center;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.img-form {
+    margin-top: -10px;
+}
+
+.registration-form .create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.registration-form .social-media{
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons{
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 576px) {
+    .registration-form form{
+        padding: 50px 20px;
+    }
+
+    .registration-form .form-icon{
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    background: #c850c0;
+    background: linear-gradient(45deg, #4158d0, #c850c0);
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+  }
+  
+  .wrap-table100 {
+    width: 1170px;
+  }
+  
+  table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 5px 5px 11px -2px #000000;
+
+
+  }
+  table * {
+    position: relative;
+  }
+  table td, table th {
+    padding-left: 8px;
+    }
+  table thead tr {
+    height: 60px;
+    background: #4c4562;
+  }
+  table tbody tr {
+    height: 50px;
+  }
+  table tbody tr:last-child {
+    border: 0;
+  }
+  table td, table th {
+    text-align: left;
+  }
+  table td.l, table th.l {
+    text-align: right;
+  }
+  table td.c, table th.c {
+    text-align: center;
+  }
+  table td.r, table th.r {
+    text-align: center;
+  }
+  
+  
+  .table100-head th{
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+    text-align: center;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  tbody tr {
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    font-weight: unset;
+  }
+  
+  tbody tr:hover {
+    color: #555555;
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  
+    
+  @media screen and (max-width: 992px) {
+    table {
+      display: block;
+    }
+    table > *, table tr, table td, table th {
+      display: block;
+    }
+    table thead {
+      display: none;
+    }
+    table tbody tr {
+      height: auto;
+      padding: 37px 0;
+    }
+    table tbody tr td {
+      padding-left: 40% !important;
+      margin-bottom: 24px;
+    }
+    table tbody tr td:last-child {
+      margin-bottom: 0;
+    }
+    table tbody tr td:before {
+      font-size: 14px;
+      color: #999999;
+      line-height: 1.2;
+      font-weight: unset;
+      position: absolute;
+      width: 40%;
+      left: 30px;
+      top: 0;
+    }
+    table tbody tr td:nth-child(1):before {
+      content: "Date";
+    }
+    table tbody tr td:nth-child(2):before {
+      content: "Order ID";
+    }
+    table tbody tr td:nth-child(3):before {
+      content: "Name";
+    }
+    table tbody tr td:nth-child(4):before {
+      content: "Price";
+    }
+    table tbody tr td:nth-child(5):before {
+      content: "Quantity";
+    }
+    table tbody tr td:nth-child(6):before {
+      content: "Total";
+    }
+  
+    
+    tbody tr {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container-table100 {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
